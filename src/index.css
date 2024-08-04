@@ -1,3 +1,51 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#search {
+  position: relative;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+#search::after,
+#search::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: red;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 33px;
+  padding-left: 45px;
+  padding-right: 45px;
+  border-radius: 10px;
+  background-image: conic-gradient(
+    from var(--angle),
+    white 30%,
+    red 90%,
+    white 30%
+  );
+  animation: 3s spin linear infinite;
+}
+
+#search::before {
+  filter: blur(0.5rem);
+  opacity: 0.5;
+}
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}

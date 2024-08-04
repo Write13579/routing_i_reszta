@@ -42,17 +42,21 @@ function Index() {
   }
 
   return (
-    <div className="p-2">
-      <h3>Welcome Home!</h3>
-      <h1 className="flex items-center justify-center text-red">
-        Input your pokemon!
-      </h1>
+    <div id="alles" className="flex flex-col justify-center items-center">
+      {/* <h3>Welcome Home!</h3> */}
+      <h1 className="text-3xl font-bold m-3">Input your pokemon!</h1>
       <input
+        className="border border-red-700 border-b-2 rounded-lg bg-gray-100 m-8 p-2"
         type="text"
         onChange={(e) => setPokemon(e.target.value)}
         value={pokemon}
       />
-      <button onClick={search}>search</button>
+      <button
+        className="border border-black p-2 rounded-xl mb-8 hover:bg-gray-50 active:bg-gray-100"
+        onClick={search}
+      >
+        search
+      </button>
 
       <br />
       <br />
