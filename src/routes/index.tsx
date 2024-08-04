@@ -18,29 +18,27 @@ function Index() {
     id: 0,
     types: [],
   });
-  let blad = false;
-  function search() {
+  const [blad, setBlad] = useState(false);
+  async function search() {
     if (pokemon.trim() !== "") {
       const url = "https://pokeapi.co/api/v2/pokemon/" + pokemon;
-      fetch(url)
-        .then((r) => {
-          if (!r.ok) {
-            console.log("blad");
-          } else {
-            return r.json();
-          }
-        })
-        .then((data: pokeType) => {
-          setPokeInfos({
-            name: data.name,
-            id: data.id,
-            types: data.types,
-          });
-        })
-        .catch((e) => console.log(e));
+
+      const response = await fetch(url); //przed kazdym promise ma byc await
+      if (!response.ok) {
+        console.log("blad");
+        setBlad(true);
+      }
+      const data: pokeType = await response.json(); //przed kazdym promise ma byc await
+      setBlad(false);
+      setPokeInfos({
+        name: data.name,
+        id: data.id,
+        types: data.types,
+      });
     } else {
-      blad = true;
+      setBlad(true);
     }
+    console.log(blad);
   }
 
   return (
@@ -62,9 +60,11 @@ function Index() {
       <p>Your Pokemon's id: {!blad ? pokeInfos.id : "error"}</p>
       <p>
         Types:{" "}
-        {pokeInfos.types.map((type, index) => (
-          <span key={index}>{type.type.name} </span>
-        ))}
+        {!blad
+          ? pokeInfos.types.map((type, index) => (
+              <span key={index}>{type.type.name} </span>
+            ))
+          : "error"}
       </p>
     </div>
   );
