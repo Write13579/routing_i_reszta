@@ -33,7 +33,7 @@
     red 90%,
     white 30%
   );
-  animation: 3s spin linear infinite;
+  animation: 4s spin linear infinite;
 }
 
 #search::before {

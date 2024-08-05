@@ -11,14 +11,14 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as NewImport } from './routes/new'
+import { Route as MemeImport } from './routes/meme'
 import { Route as JokesImport } from './routes/jokes'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
 
-const NewRoute = NewImport.update({
-  path: '/new',
+const MemeRoute = MemeImport.update({
+  path: '/meme',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -50,11 +50,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof JokesImport
       parentRoute: typeof rootRoute
     }
-    '/new': {
-      id: '/new'
-      path: '/new'
-      fullPath: '/new'
-      preLoaderRoute: typeof NewImport
+    '/meme': {
+      id: '/meme'
+      path: '/meme'
+      fullPath: '/meme'
+      preLoaderRoute: typeof MemeImport
       parentRoute: typeof rootRoute
     }
   }
@@ -65,7 +65,7 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren({
   IndexRoute,
   JokesRoute,
-  NewRoute,
+  MemeRoute,
 })
 
 /* prettier-ignore-end */
@@ -78,7 +78,7 @@ export const routeTree = rootRoute.addChildren({
       "children": [
         "/",
         "/jokes",
-        "/new"
+        "/meme"
       ]
     },
     "/": {
@@ -87,8 +87,8 @@ export const routeTree = rootRoute.addChildren({
     "/jokes": {
       "filePath": "jokes.tsx"
     },
-    "/new": {
-      "filePath": "new.tsx"
+    "/meme": {
+      "filePath": "meme.tsx"
     }
   }
 }

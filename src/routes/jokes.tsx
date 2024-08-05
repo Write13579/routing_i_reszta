@@ -35,7 +35,7 @@ function About() {
     <>
       <div
         id="alles"
-        className="p-4  flex flex-col items-center justify-center text-center"
+        className="p-4 flex flex-col items-center justify-center text-center"
       >
         <h1 className="text-4xl font-bold mb-8">JOKE GENERATOR</h1>
         <button
